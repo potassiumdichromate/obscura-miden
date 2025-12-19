@@ -55,8 +55,6 @@ Alice connects her wallet to the platform.
 
 GET /get-account
 
-yaml
-Copy code
 
 **What happens**
 - A Miden account is assigned to Alice
@@ -71,8 +69,7 @@ Alice must prove ownership before minting a property.
 
 POST /api/v1/proofs/generate-ownership
 
-pgsql
-Copy code
+
 
 **What happens**
 - Alice submits ownership documents
@@ -91,8 +88,6 @@ Alice mints her property as an encrypted on-chain asset.
 
 POST /api/v1/properties/mint-encrypted
 
-pgsql
-Copy code
 
 **What happens**
 - Property metadata is encrypted (AES-256-GCM)
@@ -111,8 +106,7 @@ Copy code
 
 GET /api/v1/properties/my-properties
 
-pgsql
-Copy code
+
 
 **What happens**
 - Platform verifies Alice as the owner
@@ -130,8 +124,7 @@ Alice lists the property with compliance rules.
 
 POST /api/v1/properties/list
 
-yaml
-Copy code
+
 
 **Disclosure Rules**
 - Valuation → Accredited investors only
@@ -149,8 +142,7 @@ Bob connects his wallet and receives a Miden account.
 
 GET /get-account
 
-yaml
-Copy code
+
 
 No personal identity data is shared.
 
@@ -160,8 +152,7 @@ No personal identity data is shared.
 
 GET /api/v1/properties/available
 
-pgsql
-Copy code
+
 
 **What Bob sees**
 - Basic property info
@@ -177,8 +168,7 @@ Bob proves financial eligibility without revealing net worth.
 
 POST /api/v1/proofs/generate-accreditation
 
-yaml
-Copy code
+
 
 **What happens**
 - Client generates ZK proof
@@ -193,8 +183,7 @@ Bob proves he is not from a restricted country.
 
 POST /api/v1/proofs/generate-jurisdiction
 
-yaml
-Copy code
+
 
 **What happens**
 - Jurisdiction constraint verified via ZK
@@ -207,8 +196,7 @@ Copy code
 
 GET /api/v1/properties/{propertyId}/details
 
-pgsql
-Copy code
+
 
 **What happens**
 - Platform checks accreditation & jurisdiction proofs
@@ -224,14 +212,11 @@ Copy code
 ### Eligibility Check
 GET /api/v1/offers/check-eligibility
 
-clean
-Copy code
+
 
 ### Offer Creation
 POST /api/v1/offers/create
 
-yaml
-Copy code
 
 **What happens**
 - Compliance is re-verified
@@ -244,8 +229,7 @@ Copy code
 
 POST /api/v1/offers/{offerId}/accept
 
-yaml
-Copy code
+
 
 **What happens**
 - Escrow account is created on Miden
@@ -258,8 +242,7 @@ Copy code
 
 GET /api/v1/settlement/{offerId}/check-ready
 
-yaml
-Copy code
+
 
 **Checks**
 - Offer accepted
@@ -292,8 +275,7 @@ Platform performs final checks:
 
 POST /api/v1/settlement/{offerId}/execute
 
-yaml
-Copy code
+
 
 **Atomic Actions**
 1. Ownership note transferred to Bob
@@ -331,8 +313,7 @@ Without revealing sensitive data.
 
 GET /api/v1/proofs/my-proofs
 
-yaml
-Copy code
+
 
 **Users can see**
 - Their proof history
@@ -362,5 +343,3 @@ Using **Miden + ZK + encryption**, without sacrificing user privacy.
 
 ---
 
-**Obscura Principle**  
-_Compliance without exposure. Ownership without surveillance._
